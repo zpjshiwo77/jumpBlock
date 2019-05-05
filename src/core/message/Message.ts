@@ -36,6 +36,20 @@ class Message {
     }
 
     /**
+     * 添加一次全局消息监听
+     * @param type          消息唯一标识
+     * @param listenerObj   侦听函数所属对象(作用域)
+     * @param listener      侦听函数
+     */
+    public static once(type: string, listenerObj: any, listener: Function): void {
+        let F = function(){
+            listener();
+            Message.off(type, listenerObj, F);
+        }
+        Message.on(type, listenerObj, F);
+    }
+
+    /**
      * 移除全局消息监听
      * @param type          消息唯一标识
      * @param listenerObj   侦听函数所属对象(作用域)

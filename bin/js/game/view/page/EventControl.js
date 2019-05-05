@@ -4,6 +4,7 @@ class EventControl extends BaseView {
         this.pressFlag = false;
         this.recordFlag = false;
         this.pressTime = 0;
+        this.score = 0;
         this.view = new ui.controlUI();
         this.AddToStage();
         this.init();
@@ -19,9 +20,37 @@ class EventControl extends BaseView {
      */
     eventInit() {
         this.view.startbtn.on(Laya.Event.MOUSE_DOWN, this, this.startGame);
+        this.view.againBtn.on(Laya.Event.MOUSE_DOWN, this, this.resetGame);
         this.view.control.on(Laya.Event.MOUSE_DOWN, this, this.press);
         this.view.control.on(Laya.Event.MOUSE_UP, this, this.release);
         Message.on("canPress", this, this.canPress);
+        Message.on("addScore", this, this.addScore);
+        Message.on("GameEnd", this, this.GameEnd);
+    }
+    /**
+     * 重置游戏
+     */
+    resetGame() {
+        this.view.score.text = this.score;
+        this.view.endBox.visible = false;
+        Message.event("resetGame");
+    }
+    /**
+     * 游戏结束
+     */
+    GameEnd() {
+        this.score = 0;
+        this.pressTime = 0;
+        this.pressFlag = false;
+        this.recordFlag = false;
+        this.view.endBox.visible = true;
+    }
+    /**
+     * 加分
+     */
+    addScore(score) {
+        this.score += score[0];
+        this.view.score.text = this.score;
     }
     /**
      * 可以按压
@@ -69,7 +98,6 @@ class EventControl extends BaseView {
             let time = this.pressTime > GameData.PRESS_TIME ? GameData.PRESS_TIME : this.pressTime;
             Message.event("release", [time]);
             this.pressTime = 0;
-            this.pressFlag = false;
         }
     }
 }

@@ -1,29 +1,41 @@
-<project version="0.9.8">
-   <asynRes>img,temp,sound</asynRes>
-   <unDealRes>embed</unDealRes>
-   <resTypes>png,jpg</resTypes>
-   <resExportPath>bin/res/atlas</resExportPath>
-   <asynResExportPath>bin</asynResExportPath>
-   <codeExportPath>src/ui</codeExportPath>
-   <codeImports><![CDATA[import laya.ui.*;]]></codeImports>
-   <codeImportsJS><![CDATA[var View=laya.ui.View;
-var Dialog=laya.ui.Dialog;]]></codeImportsJS>
-   <uiType>0</uiType>
-   <uiExportPath>bin/ui.json</uiExportPath>
-   <boxTypes>Box,List,Tab,RadioGroup,ViewStack,Panel,HBox,VBox,Tree,Sprite</boxTypes>
-   <pageTypes>View,Dialog</pageTypes>
-   <shareResPath/>
-   <codeType>1</codeType>
+<html>
+   <body>
+      <parsererror style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black">
+         <h3>This page contains the following errors:         </h3>
+         <div style="font-family:monospace;font-size:12px">error on line 1 at column 1: Document is empty
+         </div>
+         <h3>Below is a rendering of the page up to the first error.         </h3>
+      </parsererror>
+   </body>
+   <resTypes>png,jpg   </resTypes>
+   <resExportPath>bin/h5   </resExportPath>
+   <asynResExportPath>bin/h5   </asynResExportPath>
    <resCanCompress/>
-   <resPublishQuality>80</resPublishQuality>
-   <langPath/>
+   <resPublishQuality>80   </resPublishQuality>
+   <codeExportPath>src/ui   </codeExportPath>
+   <codeViewExportPath>src/view   </codeViewExportPath>
+   <uiType>0   </uiType>
+   <codeType>1   </codeType>
+   <picType>0   </picType>
+   <atlasType>1   </atlasType>
+   <atlasScale/>
    <defaultFont/>
-   <codeImportsTS><![CDATA[import View=laya.ui.View;
-import Dialog=laya.ui.Dialog;]]></codeImportsTS>
-   <textureWidth>2048</textureWidth>
-   <textureHeight>2048</textureHeight>
-   <picWidth>512</picWidth>
-   <picHeight>512</picHeight>
-   <power2>false</power2>
-   <trimempty>false</trimempty>
-</project>
+   <uiExportPath>bin/ui.json   </uiExportPath>
+   <boxTypes>Sprite,Box,List,Tab,RadioGroup,ViewStack,Panel,Tree,Vbox,Hbox   </boxTypes>
+   <pageTypes>View,Dialog   </pageTypes>
+   <codeImports><![CDATA[import laya.ui.*;import laya.display.*; ]]>   </codeImports>
+   <codeImportsJS><![CDATA[var View=laya.ui.View;
+var Dialog=laya.ui.Dialog;]]>   </codeImportsJS>
+   <codeImportsTS><![CDATA[ ]]>   </codeImportsTS>
+   <shareResPath/>
+   <langPath/>
+   <textureWidth>2048   </textureWidth>
+   <textureHeight>2048   </textureHeight>
+   <picWidth>512   </picWidth>
+   <picHeight>512   </picHeight>
+   <power2>true   </power2>
+   <copyRes>true   </copyRes>
+   <dataCompact>true   </dataCompact>
+   <trimempty>false   </trimempty>
+   <ver>0.9.9 beta   </ver>
+</html>

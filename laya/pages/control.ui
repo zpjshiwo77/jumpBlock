@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":9,
+    "selectedBox":2,
+    "selecteID":6,
     "props":{"width":750,"sceneColor":"#000000","height":1624},
     "nodeParent":-1,
     "label":"View",
@@ -18,14 +18,13 @@
             "props":{"y":0,"x":0,"width":750,"var":"control","height":1624},
             "nodeParent":1,
             "label":"Sprite(control)",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":7,
             "child":[
                 {
-                    "x":30,
                     "type":"Text",
                     "props":{"y":50,"x":0,"width":750,"visible":false,"var":"score","text":"0","height":150,"fontSize":120,"font":"Microsoft YaHei","color":"#111111","bold":true,"align":"center"},
                     "nodeParent":7,
@@ -98,6 +97,70 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":6,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Sprite",
+            "props":{"y":0,"x":0,"width":750,"visible":false,"var":"endBox","height":1624,"alpha":1},
+            "nodeParent":1,
+            "label":"Sprite(endBox)",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":10,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Sprite",
+                    "props":{"y":0,"x":0,"alpha":0.5},
+                    "nodeParent":10,
+                    "label":"Sprite",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":11,
+                    "child":[
+                        {
+                            "type":"Rect",
+                            "props":{"y":0,"x":0,"width":750,"lineWidth":1,"height":1624,"fillColor":"#000000"},
+                            "nodeParent":11,
+                            "label":"Rect",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":12,
+                            "child":[
+                                ]
+                        }]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":100,"x":0,"width":750,"text":"游戏结束","height":200,"fontSize":120,"font":"Microsoft YaHei","color":"#ffffff","align":"center"},
+                    "nodeParent":10,
+                    "label":"Text",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":13,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":500,"x":0,"width":750,"var":"againBtn","text":"在玩一次","height":150,"fontSize":70,"font":"Microsoft YaHei","color":"#e8d923","align":"center"},
+                    "nodeParent":10,
+                    "label":"Text(againBtn)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":14,
                     "child":[
                         ]
                 }]

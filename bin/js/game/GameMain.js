@@ -1,12 +1,12 @@
 class GameMain {
     constructor() {
         this.Blocks = [];
-        this.Block_dis = GameData.BLOCK_POS_Z;
+        this.Sence_blocks = [];
         this.Now_Block_id = 0;
+        this.Block_dis = GameData.BLOCK_POS_Z;
+        this.Offset_dis = 0;
         this.Press_time = 0;
         this.Piece_move_dis = 0;
-        this.Offset_dis = 0;
-        this.Sence_blocks = [];
         this.init();
     }
     init() {
@@ -22,14 +22,15 @@ class GameMain {
         Message.on("press", this, this.piecePress);
         Message.on("release", this, this.pieceRelease);
         Message.on("startGame", this, this.startGame);
-        Message.on("pieceJump", this, this.pieceJump);
         Message.on("resetGame", this, this.resetGame);
     }
     /**
      * 开始游戏
      */
     startGame() {
-        this.Piece.entering();
+        this.Piece.entering(() => {
+            Message.event("canPress");
+        });
     }
     /**
      * 重置游戏
@@ -60,7 +61,9 @@ class GameMain {
      * 棋子释放
      */
     pieceRelease(time) {
-        this.Piece.Release();
+        this.Piece.Release(() => {
+            this.pieceJump();
+        });
         this.Blocks[this.Now_Block_id].Release();
         this.Press_time = time;
     }
@@ -84,7 +87,6 @@ class GameMain {
      */
     EndStatesJudge() {
         let move_dis = this.Piece_move_dis + this.Offset_dis;
-        // Log.echo(this.Piece_move_dis,this.Offset_dis);
         if (move_dis < 0.015) {
             this.Offset_dis += this.Piece_move_dis;
             Message.event("canPress");

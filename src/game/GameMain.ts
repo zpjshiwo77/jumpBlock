@@ -2,16 +2,19 @@ class GameMain{
     private scene: Laya.Scene;
     private camera: Laya.Camera;
     private Father: Laya.Sprite3D;
-    private Blocks: Block[] = [];
+
     private Piece: Piece;
-    private antAction;
-    private Block_dis:number = GameData.BLOCK_POS_Z;
-    private Now_Block_id: number = 0;
-    private Press_time: number = 0;
-    private Piece_move_dis: number = 0;
-    private Offset_dis: number = 0;
+    private Blocks: Block[] = [];
     private Sence_blocks: Block[] = [];
 
+    private Now_Block_id: number = 0;
+
+    private Block_dis:number = GameData.BLOCK_POS_Z;
+    private Offset_dis: number = 0;
+
+    private Press_time: number = 0;
+    private Piece_move_dis: number = 0;
+    
     constructor(){
         this.init();
     }
@@ -30,7 +33,6 @@ class GameMain{
         Message.on("press",this,this.piecePress);
         Message.on("release",this,this.pieceRelease);
         Message.on("startGame",this,this.startGame);
-        Message.on("pieceJump",this,this.pieceJump);
         Message.on("resetGame",this,this.resetGame);
     }
 
@@ -38,7 +40,9 @@ class GameMain{
      * 开始游戏
      */
     private startGame():void{
-        this.Piece.entering();
+        this.Piece.entering(()=>{
+            Message.event("canPress");
+        });
     }
 
     /**
@@ -74,7 +78,9 @@ class GameMain{
      * 棋子释放
      */
     private pieceRelease(time): void{
-        this.Piece.Release();
+        this.Piece.Release(()=>{
+            this.pieceJump();
+        });
         this.Blocks[this.Now_Block_id].Release();
         this.Press_time = time;
     }
@@ -100,7 +106,6 @@ class GameMain{
      */
     private EndStatesJudge(): void{
         let move_dis = this.Piece_move_dis + this.Offset_dis;
-        // Log.echo(this.Piece_move_dis,this.Offset_dis);
         if(move_dis < 0.015){
             this.Offset_dis += this.Piece_move_dis;
             Message.event("canPress");

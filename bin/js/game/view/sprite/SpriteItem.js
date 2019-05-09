@@ -78,7 +78,8 @@ class SpritItem {
      * 重置位置
      */
     resetPos() {
-        this.transform({ x: -this.pos.x, y: -this.pos.y, z: -this.pos.z });
+        this.sprite.transform.localPosition = this.o_pos;
+        this.pos = { x: 0, y: 0, z: 0 };
     }
     /**
      * 修改位置

@@ -1,7 +1,7 @@
 class SpritItem {
     protected ID:number = iMath.randomRange(1,100000);
     protected sprite: Laya.Sprite3D;
-    protected o_pos: Laya.Vector3;
+    public o_pos: Laya.Vector3;
     public pos: pos = {x:0,y:0,z:0};
     private changeFlag = false;
     private change: any = {x:0,y:0,z:0,rx:0,ry:0,rz:0,sx:0,sy:0,sz:0};
@@ -83,7 +83,8 @@ class SpritItem {
      * 重置位置
      */
     public resetPos():void{
-        this.transform({x:-this.pos.x,y:-this.pos.y,z:-this.pos.z});
+        this.sprite.transform.localPosition = this.o_pos;
+        this.pos = {x:0,y:0,z:0};
     }
 
     /**
